@@ -1,0 +1,24 @@
+{
+  "name": "wasm-rl-engine",
+  "version": "1.0.0",
+  "description": "WASM roguelike engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:untouched": "asc assembly/index.ts --target debug",
+    "asbuild:optimized": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "wasmtime": "wasmtime run build/optimized.wasm",
+    "wasmtime:untouched": "wasmtime build/untouched.wasm"
+  },
+  "author": "Alex Jurkiewicz <alex@jurkiewi.cz>",
+  "license": "MIT",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.18.27",
+    "as-container": "^0.4.0",
+    "as-wasi": "^0.4.4"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.18.27"
+  }
+}
